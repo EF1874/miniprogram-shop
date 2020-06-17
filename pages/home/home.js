@@ -1,3 +1,5 @@
+// 引入 用来发送请求的 方法
+import { request } from "../../request/request.js"
 //Page Object
 Page({
   data: {
@@ -5,51 +7,57 @@ Page({
     swiperList: {}
   },
   //options(Object)
-  onLoad: function(options){
+  onLoad: function (options) {
     // 发送异步请求获取轮播图数据
-    var reqTask = wx.request({
-      url: 'https://api-hmugo-web.itheima.net/api/public/v1/home/swiperdata',
-      // 默认值可以省略
-      // data: {},
-      // header: {'content-type':'application/json'},
-      // method: 'GET',
-      // dataType: 'json',
-      // responseType: 'text',
-      success: (result)=>{
-        // 为轮播图列表赋值
+    // var reqTask = wx.request({
+    //   url: 'https://api-hmugo-web.itheima.net/api/public/v1/home/swiperdata',
+    //   // 默认值可以省略
+    //   // data: {},
+    //   // header: {'content-type':'application/json'},
+    //   // method: 'GET',
+    //   // dataType: 'json',
+    //   // responseType: 'text',
+    //   success: (result)=>{
+    //     // 为轮播图列表赋值
+    //     this.setData({
+    //       swiperList: result.data.message
+    //     })
+    //     // console.log('swiperList', this.data.swiperList)
+    //   }
+    // });
+    request({ url: 'https://api-hmugo-web.itheima.net/api/public/v1/home/swiperdata' })
+      .then(result => {
         this.setData({
           swiperList: result.data.message
         })
-        // console.log('swiperList', this.data.swiperList)
-      }
-    });
+      })
   },
-  onReady: function(){
-    
-  },
-  onShow: function(){
-    
-  },
-  onHide: function(){
+  onReady: function () {
 
   },
-  onUnload: function(){
+  onShow: function () {
 
   },
-  onPullDownRefresh: function(){
+  onHide: function () {
 
   },
-  onReachBottom: function(){
+  onUnload: function () {
 
   },
-  onShareAppMessage: function(){
+  onPullDownRefresh: function () {
 
   },
-  onPageScroll: function(){
+  onReachBottom: function () {
+
+  },
+  onShareAppMessage: function () {
+
+  },
+  onPageScroll: function () {
 
   },
   //item(index,pagePath,text)
-  onTabItemTap:function(item){
+  onTabItemTap: function (item) {
 
   }
 });
