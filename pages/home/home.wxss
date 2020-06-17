@@ -1,0 +1,7 @@
+.home_swiper swiper {
+  width: 750rpx;
+  height: 340rpx;
+}
+.home_swiper swiper image {
+  width: 100%;
+}
