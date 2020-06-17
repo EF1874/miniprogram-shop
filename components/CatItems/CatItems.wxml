@@ -1,0 +1,5 @@
+<view class="home_cate">
+  <navigator wx:for="{{dataList}}" wx:key="*this" open-type="navigate" url="{{item.navigator_url}}">
+    <image mode="widthFix" src="{{item.image_src}}" />
+  </navigator>
+</view>

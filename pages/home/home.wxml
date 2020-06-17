@@ -1,4 +1,4 @@
-<view>
+<view class="home_container">
   <!-- 搜索框 -->
   <SearchInput></SearchInput>
   <!-- 轮播图 -->
@@ -22,4 +22,6 @@
         </swiper-item>
     </swiper>
   </view>
+  <!-- 分类导航 -->
+  <CatItems dataList="{{cateList}}"></CatItems>
 </view>

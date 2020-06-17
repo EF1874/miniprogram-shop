@@ -1,0 +1,13 @@
+.home_cate {
+  padding: 15rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.home_cate navigator {
+  width: 128rpx;
+}
+.home_cate navigator image {
+  width: 128rpx;
+  height: 140rpx;
+}
