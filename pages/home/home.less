@@ -1,12 +1,42 @@
 // .home_container {
 //   background: #F4F4F4;
 // }
-.home_swiper {
-  swiper {
-    width: 750rpx;
-    height: 340rpx;
-    image {
-      width: 100%;
+.floor_container {
+  .floor_group {
+    .floor_title {
+      border-left: 10rpx solid #fff;
+      border-right: 10rpx solid #fff;
+      padding: 10rpx 0;
+      image {
+        width: 100%;
+      }
+    }
+    .floor_list {
+      border-left: 10rpx solid #fff;
+      border-right: 10rpx solid #fff;
+      // 清除浮动
+      overflow: hidden;
+      navigator {
+        float: left;
+        width: 33.33%;
+        // 后代选择器，可选后面4个子元素
+        &:nth-last-child(-n + 4) {
+          // 原图比例关系232 / 386 = 33.33vm / height
+          height: calc((100vw - 20rpx) / 3 * 386 / 232 / 2);
+          border-left: 10rpx solid #fff;
+        }
+        // 选中指定子元素
+        &:nth-child(2) {
+          border-bottom: 10rpx solid #fff;
+        }
+        &:nth-child(3) {
+          border-bottom: 10rpx solid #fff;
+        }
+        image {
+          width: 100%;
+          height: 100%;
+        }
+      }
     }
   }
 }

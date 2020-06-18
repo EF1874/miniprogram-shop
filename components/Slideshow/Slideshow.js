@@ -1,12 +1,11 @@
-// components/CatItems/CatItems.js
+// components/Slideshow/Slideshow.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    // 组件数据
-    cateList: {
-      type: Array
+    swiperList: {
+      type: Object
     }
   },
 

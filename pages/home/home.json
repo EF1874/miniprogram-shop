@@ -1,5 +1,6 @@
 {
   "usingComponents": {
+    "Slideshow": "../../components/Slideshow/Slideshow",
     "SearchInput": "../../components/SearchInput/SearchInput",
     "CatItems": "../../components/CatItems/CatItems"
   }
