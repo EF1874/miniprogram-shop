@@ -15,8 +15,10 @@ page {
         justify-content: center;
         align-items: center;
         font-size: 30rpx;
-        navigator {
-        }
+      }
+      .active {
+        color: var(--themeColor);
+        border-left: 5px solid currentColor;
       }
     }
     .right_content {
@@ -27,6 +29,10 @@ page {
           margin: 0 auto;
           text-align: center;
           line-height: 80rpx;
+          .delimiter {
+            padding: 0 10rpx;
+            color: #ccc;
+          }
         }
         .goods_list {
           display: flex;

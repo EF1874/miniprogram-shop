@@ -18,6 +18,10 @@ page {
   align-items: center;
   font-size: 30rpx;
 }
+.category_container .cate_container .left_menu .active {
+  color: var(--themeColor);
+  border-left: 5px solid currentColor;
+}
 .category_container .cate_container .right_content {
   flex: 5;
 }
@@ -26,6 +30,10 @@ page {
   margin: 0 auto;
   text-align: center;
   line-height: 80rpx;
+}
+.category_container .cate_container .right_content .goods_title_container .goods_title .delimiter {
+  padding: 0 10rpx;
+  color: #ccc;
 }
 .category_container .cate_container .right_content .goods_title_container .goods_list {
   display: flex;
