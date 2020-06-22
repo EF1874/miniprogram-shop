@@ -7,7 +7,10 @@ Page({
     leftMenuList: [],
     // 右侧内容
     rightContent: [],
-    currentIndex: 0
+    // 左侧菜单的编号
+    currentIndex: 0,
+    // 滚动条位置
+    scrollToTop: 0
   },
   // 页面分类数据
   cateList: [],
@@ -15,6 +18,7 @@ Page({
   onLoad: function (options) {
     // 获取本地存储数据
     const Cates = wx.getStorageSync("cates");
+    // 判断本地是否有数据
     if (!Cates) {
       this.getCateList();
     } else {
@@ -24,7 +28,6 @@ Page({
         // 没有过期则直接使用
       } else {
         this.cateList = Cates.data;
-
         this.setData({
           leftMenuList: this.cateList.map(v => v.cat_name),
           rightContent: this.cateList[0].children,
@@ -35,19 +38,20 @@ Page({
   },
 
   // 获取分类数据
-  getCateList() {
-    request({ url: "https://api-hmugo-web.itheima.net/api/public/v1/categories" })
-      .then(result => {
-        this.cateList = result.data.message
-        // 保存数据
-        wx.setStorageSync("cates", { time: Date.now(), data: this.cateList });
-        this.setData({
-          leftMenuList: this.cateList.map(v => v.cat_name),
-          rightContent: this.cateList[0].children,
-        })
-        // console.log(this.cateList)
-        // console.log(result)
-      })
+  async getCateList() {
+    // request({ url: "/categories" })
+    //   .then(result => {
+    const result = await request({ url: "/categories" })
+    this.cateList = result
+    // 保存数据
+    wx.setStorageSync("cates", { time: Date.now(), data: this.cateList });
+    this.setData({
+      leftMenuList: this.cateList.map(v => v.cat_name),
+      rightContent: this.cateList[0].children,
+    })
+    // console.log(this.cateList)
+    // console.log(result)
+    // })
   },
   // 左侧菜单点击事件
   clickLetter(e) {
@@ -56,7 +60,10 @@ Page({
     let rightContent = this.cateList[index].children
     this.setData({
       currentIndex: index,
-      rightContent
+      rightContent,
+      // 重新设置scroll-top距离
+      scrollToTop: 0
     })
-  }
+  },
+
 })

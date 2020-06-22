@@ -3,14 +3,13 @@
   <SearchInput></SearchInput>
   <view class="cate_container">
     <!-- 左侧菜单 -->
-    <scroll-view scroll-y="true" class="left_menu" scroll-top="true" enable-back-to-top>
-      <view class="left_menu_list {{leftMenuIndex === currentIndex ? 'active' : ''}}" wx:for="{{leftMenuList}}" wx:for-item="leftMenu" wx:for-index="leftMenuIndex" wx:key="*this"
-      bindtap="clickLetter" data-index="{{leftMenuIndex}}">
+    <scroll-view scroll-y="true" class="left_menu" enable-back-to-top>
+      <view class="left_menu_list {{leftMenuIndex === currentIndex ? 'active' : ''}}" wx:for="{{leftMenuList}}" wx:for-item="leftMenu" wx:for-index="leftMenuIndex" wx:key="*this" bindtap="clickLetter" data-index="{{leftMenuIndex}}">
         {{leftMenu}}
       </view>
     </scroll-view>
     <!-- 右侧内容 -->
-    <scroll-view class="right_content" scroll-y scroll-top enable-back-to-top scroll-with-animation>
+    <scroll-view class="right_content" scroll-y scroll-top="{{scrollToTop}}" enable-back-to-top scroll-with-animation>
       <view class="goods_title_container" wx:for="{{rightContent}}" wx:for-item="goodsTitle" wx:for-index="goodsTitleIndex" wx:key="cat_id">
         <view class="goods_title">
           <text class="delimiter">/</text>
@@ -18,7 +17,7 @@
           <text class="delimiter">/</text>
         </view>
         <view class="goods_list">
-          <navigator wx:for="{{goodsTitle.children}}" wx:for-item="goodsList" wx:key="cat_id">
+          <navigator wx:for="{{goodsTitle.children}}" wx:for-item="goodsList" wx:key="cat_id" url="/pages/goods_list/goods_list?cid={{goodsList.cat_id}}">
             <image mode="widthFix" src="{{goodsList.cat_icon}}" />
             <text>{{goodsList.cat_name}}</text>
           </navigator>
