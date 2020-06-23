@@ -1,7 +1,20 @@
 <view class="goods_list_container">
   <SearchInput></SearchInput>
   <Tabs tabs="{{tabs}}" bindtabsItemChange="handleTabsItemChange">
-    <block wx:if="{{tabs[0].isActive}}">0</block>
+    <block wx:if="{{tabs[0].isActive}}"
+    wx:for="{{goodsList}}" wx:for-item="goodsListItem" wx:for-index="goodsListIndex" wx:key="goods_id">
+      <view class="goods_list_content_container">
+        <navigator class="goods_list_content" >
+          <view class="goods_list_img">
+            <image src="{{goodsListItem.goods_small_logo}}" />
+          </view>
+          <view class="goods_list_name_container">
+            <view class="goods_list_name">{{goodsListItem.goods_name}}</view>
+            <view class="goods_list_price">￥{{goodsListItem.goods_price}}</view>
+          </view>
+        </navigator>
+      </view>
+    </block>
     <block wx:if="{{tabs[1].isActive}}">1</block>
     <block wx:if="{{tabs[2].isActive}}">2</block>
   </Tabs>

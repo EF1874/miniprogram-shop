@@ -1,0 +1,43 @@
+.goods_list_content_container {
+  // margin-top: 20rpx;
+  // padding: 20rpx;
+  // height: calc((100vh - 90rpx - 70rpx) / 4.5);
+  .goods_list_content {
+    height: 100%;
+    display: flex;
+    border-bottom: 1rpx solid #e8e8e8;
+    .goods_list_img {
+      display: flex;
+      width: 40%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      image {
+        width: 198.1rpx;
+        height: 198.1rpx;
+      }
+    }
+    .goods_list_name_container {
+      width: 59%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      .goods_list_name {
+        color: #333;
+        // margin-left: 20rpx;
+        // font-size: 28rpx;
+        // 自适应布局
+        display: -webkit-box;
+        overflow: hidden;
+        // 在父元素上设置   子元素排列 vertical (垂直) or horizontal（水平）
+        -webkit-box-orient: vertical;
+        // 多行文字溢出显示省略号
+        -webkit-line-clamp: 2;
+      }
+      .goods_list_price {
+        color: #ff2727;
+        font-size: 32rpx;
+      }
+    }
+  }
+}
