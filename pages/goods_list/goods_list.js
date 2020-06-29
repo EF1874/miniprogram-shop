@@ -79,7 +79,7 @@ Page({
 
   // 请求数据
   async getGoodsList() {
-    console.log(this.QueryParams)
+    // console.log(this.QueryParams)
     // 1.发送异步请求
     const result = await request({ url: "/goods/search", data: this.QueryParams })
     // 计算总页数
@@ -87,7 +87,7 @@ Page({
     this.setData({
       goodsList: [...this.data.goodsList, ...result.goods]
     })
-    console.log('result:', result, this.totalPage)
+    // console.log('result:', result, this.totalPage)
     // // 保存数据
     // wx.setStorageSync("goods", { time: Date.now(), data: this.data.goodsList });
   },

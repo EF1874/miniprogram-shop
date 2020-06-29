@@ -11,8 +11,7 @@
   align-items: center;
 }
 .goods_list_content_container .goods_list_content .goods_list_img image {
-  width: 198.1rpx;
-  height: 198.1rpx;
+  width: 70%;
 }
 .goods_list_content_container .goods_list_content .goods_list_name_container {
   width: 59%;

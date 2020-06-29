@@ -1,12 +1,19 @@
 <view class="goods_list_container">
+  <!-- 搜索框 -->
   <SearchInput></SearchInput>
+  <!-- tabs框切换排序方式 -->
   <Tabs tabs="{{tabs}}" bindtabsItemChange="handleTabsItemChange">
-    <block wx:if="{{tabs[0].isActive}}"
-    wx:for="{{goodsList}}" wx:for-item="goodsListItem" wx:for-index="goodsListIndex" wx:key="goods_id">
+    <!-- 内容列表插槽 -->
+    <block wx:if="{{tabs[0].isActive}}">
       <view class="goods_list_content_container">
-        <navigator class="goods_list_content" >
+        <navigator class="goods_list_content" 
+        wx:for="{{goodsList}}" 
+        wx:for-item="goodsListItem" 
+        wx:for-index="goodsListIndex" 
+        wx:key="goods_id"
+        url="/pages/goods_detail/goods_detail?goods_id={{goodsListItem.goods_id}}">
           <view class="goods_list_img">
-            <image src="{{goodsListItem.goods_small_logo}}" />
+            <image mode="widthFix" src="{{goodsListItem.goods_small_logo?goodsListItem.goods_small_logo: 'http://image4.suning.cn/uimg/b2c/newcatentries/0000000000-000000000606013705_1_400x400.jpg'}}" />
           </view>
           <view class="goods_list_name_container">
             <view class="goods_list_name">{{goodsListItem.goods_name}}</view>
