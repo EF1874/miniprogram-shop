@@ -22,9 +22,27 @@ Page({
   async getGoodsInfo(goods_id) {
     const goodsInfo = await request({ url: "/goods/detail", data: { goods_id } })
     this.setData({
-      goodsInfo
+      goodsInfo: {
+        goods_name: goodsInfo.goods_name,
+        goods_price: goodsInfo.goods_price,
+        // iphone部分手机不识别webp图片格式
+        goods_introduce: goodsInfo.goods_introduce.replace(/\.webp/g, '.jpg'),
+        pics: goodsInfo.pics
+      }
     })
     console.log(goods_id, goods_id, this.data.goodsInfo)
+  },
+
+  // 点击查看大图
+  previewImage(e) {
+    const current = e.target.dataset.url;
+    // 将图片链接添加到一个数组内
+    const urls = this.data.goodsInfo.pics.map(v => v.pics_mid)
+    console.log(e,urls,this.data.goodsInfo)
+    wx.previewImage({
+      current, // 当前显示图片的http链接  
+      urls // 需要预览的图片http链接列表  
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

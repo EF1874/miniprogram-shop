@@ -1,3 +1,7 @@
+page {
+  margin-bottom: 90rpx;
+}
+
 .goods_detail_container {
   .goods_detail_swiper {
     width: 100%;
@@ -9,4 +13,95 @@
       }
     }
   }
+}
+.goods_price {
+  color: #ff2727;
+  font-size: 32rpx;
+  font-weight: bold;
+  padding: 15rpx;
+}
+.goods_name_container {
+  padding: 10rpx 0;
+  display: flex;
+  .goods_name {
+    width: 85%;
+    font-size: 30rpx;
+    padding: 0 10rpx;
+    border-right: 1rpx solid #9ea09d;
+    color: #333;
+    // 自适应布局
+    display: -webkit-box;
+    overflow: hidden;
+    // 在父元素上设置   子元素排列 vertical (垂直) or horizontal（水平）
+    -webkit-box-orient: vertical;
+    // 多行文字溢出显示省略号
+    -webkit-line-clamp: 2;
+  }
+  .goods_like {
+    width: 15%;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    i {
+      font-size: 40rpx;
+    }
+    text {
+      margin-top: 10rpx;
+    }
+  }
+}
+
+.rich_text_wrap {
+  .rich_text_header {
+    padding-left: 20rpx;
+    height: 100rpx;
+    border-top: 10rpx solid #ECEFEC;
+    border-bottom: 10rpx solid #ECEFEC;
+    text {
+      font-size: 40rpx;
+      line-height: 80rpx;
+      color: #ff2727;
+      font-weight: bold;
+    }
+  }
+}
+
+.btm_tool {
+  background: #fff;
+  border-top: 1rpx solid #ccc;
+  display: flex;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 90rpx;
+  .tool_item {
+    position: relative;
+    flex: 1;
+    font-size: 24rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    button {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+  }
+  .btn_cart {
+    flex: 2;
+    color: #fff;
+    background: #FFA200;
+  }
+  .btn_buy {
+    flex: 2;
+    color: #fff;
+    background: #F8554A;
+    }
 }

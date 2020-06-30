@@ -1,3 +1,6 @@
+page {
+  margin-bottom: 90rpx;
+}
 .goods_detail_container .goods_detail_swiper {
   width: 100%;
   height: 65vw;
@@ -7,4 +10,88 @@
 }
 .goods_detail_container .goods_detail_swiper .goods_detail_swiper_item image {
   width: 60%;
+}
+.goods_price {
+  color: #ff2727;
+  font-size: 32rpx;
+  font-weight: bold;
+  padding: 15rpx;
+}
+.goods_name_container {
+  padding: 10rpx 0;
+  display: flex;
+}
+.goods_name_container .goods_name {
+  width: 85%;
+  font-size: 30rpx;
+  padding: 0 10rpx;
+  border-right: 1rpx solid #9ea09d;
+  color: #333;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.goods_name_container .goods_like {
+  width: 15%;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.goods_name_container .goods_like i {
+  font-size: 40rpx;
+}
+.goods_name_container .goods_like text {
+  margin-top: 10rpx;
+}
+.rich_text_wrap .rich_text_header {
+  padding-left: 20rpx;
+  height: 100rpx;
+  border-top: 10rpx solid #ECEFEC;
+  border-bottom: 10rpx solid #ECEFEC;
+}
+.rich_text_wrap .rich_text_header text {
+  font-size: 40rpx;
+  line-height: 80rpx;
+  color: #ff2727;
+  font-weight: bold;
+}
+.btm_tool {
+  background: #fff;
+  border-top: 1rpx solid #ccc;
+  display: flex;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 90rpx;
+}
+.btm_tool .tool_item {
+  position: relative;
+  flex: 1;
+  font-size: 24rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.btm_tool .tool_item button {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.btm_tool .btn_cart {
+  flex: 2;
+  color: #fff;
+  background: #FFA200;
+}
+.btm_tool .btn_buy {
+  flex: 2;
+  color: #fff;
+  background: #F8554A;
 }
