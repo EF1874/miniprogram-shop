@@ -8,7 +8,7 @@ Page({
   data: {
     goodsInfo: {},
   },
-
+  goodsData: {},
   /**
    * 生命周期函数--监听页面加载
    */
@@ -21,6 +21,7 @@ Page({
   // 获取商品详情数据
   async getGoodsInfo(goods_id) {
     const goodsInfo = await request({ url: "/goods/detail", data: { goods_id } })
+    this.goodsData = goodsInfo
     this.setData({
       goodsInfo: {
         goods_name: goodsInfo.goods_name,
@@ -33,7 +34,7 @@ Page({
     console.log(goods_id, goods_id, this.data.goodsInfo)
   },
 
-  // 点击查看大图
+  // 点击轮播图查看大图
   previewImage(e) {
     const current = e.target.dataset.url;
     // 将图片链接添加到一个数组内
@@ -44,52 +45,29 @@ Page({
       urls // 需要预览的图片http链接列表  
     })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
 
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  // 点击加入购物车
+  handleCartAdd() {
+    // 获取缓存中的购物车数组
+    const cart = wx.getStorageSync('cart') || [];
+  // 判断 商品对象是否存在于购物车数组中
+    const index = cart.findIndex(v => v.goods_id === this.goodsData.goods_id)
+    if(index === -1) {
+      // 不存在,表示第一次添加购物车,
+      this.goodsData.num = 1;
+      cart.push(this.goodsData)
+    } else {
+      // 已存在,把购物车数量增加
+      cart[index].num++
+    }
+    // 把购物车重新添加回缓存
+    wx.setStorageSync('cart', cart);
+    // 弹框提示
+    wx.showToast({
+      title: '加入成功',
+      icon: 'success',
+      // 防止用户手抖疯狂点击按钮，为true会等待1.5s才能再次点击
+      mask: true,
+    });
   }
 })
