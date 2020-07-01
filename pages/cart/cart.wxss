@@ -1,1 +1,4 @@
-/* pages/cart/cart.wxss */
+.cart .receiver_address_container {
+  padding: 20rpx;
+  border-bottom: 1rpx solid #EB4450;
+}
