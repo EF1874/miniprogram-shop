@@ -36,3 +36,35 @@ export const openSetting = () => {
     });
   })
 }
+
+// Promise形式的show MOdel
+// @param {project} param0参数
+export const showModal = ({ content }) => {
+  return new Promise((resolve, reject) => {
+    wx.showModal({
+      title: '提示',
+      content: content,
+      success: (result) => {
+        resolve(result);
+      },
+      fail: (err) => { reject(err) },
+      complete: () => { }
+    });
+  })
+}
+
+// Promise形式的showToast
+// @param {project} param0参数
+export const showToast = ({ title }) => {
+  return new Promise((resolve, reject) => {
+    wx.showToast({
+      title: title,
+      icon: "none",
+      success: (result) => {
+        resolve(result);
+      },
+      fail: (err) => { reject(err) },
+      complete: () => { }
+    });
+  })
+}

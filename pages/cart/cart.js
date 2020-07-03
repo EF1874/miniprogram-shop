@@ -1,4 +1,4 @@
-import { getSetting, chooseAddress, openSetting } from "../../utils/asyncWx.js"
+import { getSetting, chooseAddress, openSetting, showModal, showToast } from "../../utils/asyncWx.js"
 
 Page({
   data: {
@@ -83,37 +83,28 @@ Page({
     this.getFooterData(cart)
   },
 
-  // 减少商品数量
-  numReduce(e) {
+  // 编辑商品数量功能
+  async handleNumEdit(e) {
     // 获取购物车数据
-    const { cart } = this.data;
+    let { cart } = this.data;
     // 获取被选中的商品id
-    const { goods_id } = e.currentTarget.dataset;
+    const { operation, id } = e.currentTarget.dataset;
     // 获取被选中的商品index
-    const index = this.data.cart.findIndex(v => goods_id === v.goods_id);
-    // 减少购物车商品数量
-    cart[index].num--;
-    // 如果数量为0则删除该商品
-    if (cart[index].num === 0) {
-      cart.splice(index, 1)
-    };
-    // 重新计算底栏数据
-    this.getFooterData(cart);
-  },
+    const index = cart.findIndex(v => v.goods_id === id);
+    console.log(cart, operation, id, index)
 
-  // 增加商品数量
-  numAdd(e) {
-    // console.log(e)
-    // 获取购物车数据
-    const { cart } = this.data;
-    // 获取被选中的商品id
-    const { goods_id } = e.currentTarget.dataset;
-    // 获取被选中的商品index
-    const index = this.data.cart.findIndex(v => goods_id === v.goods_id);
-    // 商品数量增加
-    cart[index].num++;
-    // 重新计算底栏数据
+    // 编辑购物车商品数量
+    cart[index].num += operation;
     this.getFooterData(cart);
+
+    if (cart[index].num === 1 && operation === -1) {
+      const res = await showModal({ content: "您是否要删除？" });
+      if (res.confirm) {
+        cart.splice(index, 1)
+        // 重新计算底栏数据
+        this.getFooterData(cart);
+      }
+    }
   },
 
   // 获取底部全选状态，总金额，总数量
@@ -143,5 +134,30 @@ Page({
     });
     // 将数据保存至缓存
     wx.setStorageSync("cart", cart);
+  },
+
+  // 点击结算功能
+  async handlePay() {
+    // 验证是否填写收货地址
+    const { address, totalNum } = this.data;
+    if (!address.all) {
+      await showToast({ title: "您还没有选择收货地址！" });
+      return;
+    };
+
+    // 验证是否选中商品
+    if (totalNum === 0) {
+      await showToast({ title: "您还没有选购商品！" });
+      return;
+    }
+
+    // 验证通过，跳转到支付页面
+    wx.navigateTo({
+      url: '/pages/pay/pay',
+      success: (result) => {
+      },
+      fail: () => { },
+      complete: () => { }
+    });
   }
 })
