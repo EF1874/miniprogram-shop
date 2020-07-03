@@ -55,6 +55,7 @@ Page({
     if(index === -1) {
       // 不存在,表示第一次添加购物车,
       this.goodsData.num = 1;
+      this.goodsData.checked = true;
       cart.push(this.goodsData)
     } else {
       // 已存在,把购物车数量增加
