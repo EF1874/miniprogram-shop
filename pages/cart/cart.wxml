@@ -57,7 +57,7 @@
     </view>
     <!-- 总价格 -->
     <view class="total_price_wrap">
-      <view class="total_price">
+      <view class="total_price" style="font-weight: bold">
         合计：<text class="total_price_text">￥{{totalPrice}}</text>
       </view>
       <view>包含运费</view>
