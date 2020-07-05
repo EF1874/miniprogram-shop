@@ -68,3 +68,31 @@ export const showToast = ({ title }) => {
     });
   })
 }
+
+// Promise形式的wx-login
+export const login = () => {
+  return new Promise((resolve, reject) => {
+    wx.login({
+      timeout: 10000,
+      success: (result) => {
+        resolve(result)
+      },
+      fail: (err) => { reject(console.log(err)) },
+      complete: () => { }
+    });
+  })
+}
+
+// Promise形式的微信小程序支付
+export const requestPayment = (pay) => {
+  return new Promise((resolve, reject) => {
+    wx.requestPayment({
+      ...pay,
+      success: (result) => {
+        resolve(result)
+      },
+      fail: (err) => { reject(console.log(err)) },
+      complete: () => { }
+    });
+  })
+}
